@@ -1,0 +1,370 @@
+/* Abstract Animation - Wave Lines */
+.abstract-animation {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(
+        circle at 50% 50%,
+        rgba(0, 102, 255, 0.05) 0%,
+        transparent 70%
+    );
+}
+
+.wave-lines {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 20px rgba(0, 102, 255, 0.3));
+}
+
+.wave-line {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: drawLine 3s ease-in-out forwards;
+}
+
+.line-1 {
+    animation: drawLine 3s ease-in-out forwards, flowWave1 8s ease-in-out infinite;
+    animation-delay: 0s, 3s;
+}
+
+.line-2 {
+    animation: drawLine 3s ease-in-out forwards, flowWave2 8s ease-in-out infinite;
+    animation-delay: 0.5s, 3.5s;
+}
+
+.line-3 {
+    animation: drawLine 3s ease-in-out forwards, flowWave3 8s ease-in-out infinite;
+    animation-delay: 1s, 4s;
+    opacity: 0.7;
+}
+
+.line-4 {
+    animation: drawLine 3s ease-in-out forwards, flowWave4 8s ease-in-out infinite;
+    animation-delay: 1.5s, 4.5s;
+    opacity: 0.7;
+}
+
+/* Circle Elements */
+.circle-element {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.6;
+}
+
+.circle-1 {
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, 
+        rgba(0, 102, 255, 0.4) 0%, 
+        rgba(0, 102, 255, 0.1) 50%, 
+        transparent 100%);
+    top: 20%;
+    left: 15%;
+    animation: floatCircle 10s ease-in-out infinite;
+}
+
+.circle-2 {
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, 
+        rgba(78, 205, 196, 0.4) 0%, 
+        rgba(78, 205, 196, 0.1) 50%, 
+        transparent 100%);
+    bottom: 25%;
+    right: 20%;
+    animation: floatCircle 12s ease-in-out infinite;
+    animation-delay: 2s;
+}
+
+.circle-3 {
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, 
+        rgba(0, 102, 255, 0.3) 0%, 
+        rgba(78, 205, 196, 0.2) 50%, 
+        transparent 100%);
+    top: 50%;
+    right: 10%;
+    animation: floatCircle 14s ease-in-out infinite;
+    animation-delay: 4s;
+}
+
+/* Keyframe Animations */
+@keyframes drawLine {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes flowWave1 {
+    0%, 100% {
+        d: path("M0,250 Q125,200 250,250 T500,250");
+    }
+    25% {
+        d: path("M0,250 Q125,230 250,250 T500,250");
+    }
+    50% {
+        d: path("M0,250 Q125,180 250,250 T500,250");
+    }
+    75% {
+        d: path("M0,250 Q125,220 250,250 T500,250");
+    }
+}
+
+@keyframes flowWave2 {
+    0%, 100% {
+        d: path("M0,250 Q125,300 250,250 T500,250");
+    }
+    25% {
+        d: path("M0,250 Q125,270 250,250 T500,250");
+    }
+    50% {
+        d: path("M0,250 Q125,320 250,250 T500,250");
+    }
+    75% {
+        d: path("M0,250 Q125,280 250,250 T500,250");
+    }
+}
+
+@keyframes flowWave3 {
+    0%, 100% {
+        d: path("M0,250 Q125,220 250,250 T500,250");
+    }
+    33% {
+        d: path("M0,250 Q125,240 250,250 T500,250");
+    }
+    66% {
+        d: path("M0,250 Q125,200 250,250 T500,250");
+    }
+}
+
+@keyframes flowWave4 {
+    0%, 100% {
+        d: path("M0,250 Q125,280 250,250 T500,250");
+    }
+    33% {
+        d: path("M0,250 Q125,260 250,250 T500,250");
+    }
+    66% {
+        d: path("M0,250 Q125,300 250,250 T500,250");
+    }
+}
+
+@keyframes floatCircle {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.6;
+    }
+    33% {
+        transform: translate(30px, -30px) scale(1.1);
+        opacity: 0.8;
+    }
+    66% {
+        transform: translate(-20px, 40px) scale(0.9);
+        opacity: 0.5;
+    }
+}
+
+/* Scroll reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: transform 360ms ease, opacity 600ms ease;
+    will-change: transform, opacity;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Scroll Progress Bar */
+.scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    width: 0%;
+    z-index: 10000;
+    transition: width 0.1s ease;
+    box-shadow: 0 0 10px rgba(0, 102, 255, 0.5);
+}
+
+/* Particle Canvas */
+.particle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.3;
+}
+
+/* Ripple Effect */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(0);
+    animation: ripple-animation 0.6s ease-out;
+    pointer-events: none;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+
+/* Wave text effect on hover */
+.hero-text h2, .features-preview h3, .problem-solution h3, .download-section h3 {
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.hero-text h2:hover {
+    animation: none;
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-10px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    75% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Liquid button effect */
+.cta-button::after, .download-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+    pointer-events: none;
+}
+
+.cta-button:active::after, .download-button:active::after {
+    width: 300px;
+    height: 300px;
+    transition: width 0s, height 0s;
+}
+
+/* Shimmer effect */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.feature-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    background-size: 200% 100%;
+    animation: none;
+    opacity: 0;
+    transition: none;
+    pointer-events: none;
+}
+
+/* Background animation */
+@keyframes backgroundShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(0, 102, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(78, 205, 196, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(0, 102, 255, 0.05) 0%, transparent 40%);
+    animation: backgroundShift 25s ease infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+header, main, footer {
+    position: relative;
+    z-index: 2;
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced hover states */
+nav a, .cta-button, .download-button {
+    position: relative;
+    overflow: hidden;
+}
+
+nav a::before, .cta-button::before, .download-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: none;
+}
+
+nav a:hover::before, .cta-button:hover::before, .download-button:hover::before {
+    width: 0;
+    height: 0;
+}
+
+/* Perspective on scroll */
+.hero, .features-preview, .problem-solution, .download-section {
+    transform-style: preserve-3d;
+}

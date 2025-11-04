@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callifornia - Защищенные звонки 1 на 1</title>
+    <link rel="stylesheet" href="styles/variables.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="icon" href="images/deadlock_logo.png" type="image/x-icon">
+
+    <style>
+        @font-face {
+            font-family: 'Outfit';
+            src: url('fonts/Outfit-VariableFont_wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: normal;
+        }
+        
+        </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/deadlock_logo.png" alt="Callifornia Logo" class="logo">
+            <h1><span class="callifornia-text">Callifornia</span> <span class="beta-text">Beta</span></h1>
+        </div>
+        <button id="mobile-menu-toggle" class="mobile-menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav>
+            <ul>
+                <li><a class="active" href="index.html">Главная</a></li>
+                <li><a href="pages/roadmap.html">Обновления</a></li>
+                <li><a href="pages/download.html">Скачать</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <h2>Качественные защищенные звонки, когда другие подводят</h2>
+                <p>В условиях плохо работающих звонков в Telegram и Google Meet появилась <span class="callifornia-text">Callifornia</span> - приложение для кристально чистых звонков 1 на 1 с полным end-to-end шифрованием.</p>
+            </div>
+            <div class="hero-image">
+                <div class="abstract-animation">
+                    <!-- Wave Lines -->
+                    <svg class="wave-lines" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                        <path class="wave-line line-1" d="M0,250 Q125,200 250,250 T500,250" fill="none" stroke="url(#gradient1)" stroke-width="3"/>
+                        <path class="wave-line line-2" d="M0,250 Q125,300 250,250 T500,250" fill="none" stroke="url(#gradient2)" stroke-width="3"/>
+                        <path class="wave-line line-3" d="M0,250 Q125,220 250,250 T500,250" fill="none" stroke="url(#gradient1)" stroke-width="2"/>
+                        <path class="wave-line line-4" d="M0,250 Q125,280 250,250 T500,250" fill="none" stroke="url(#gradient2)" stroke-width="2"/>
+                        
+                        <defs>
+                            <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:rgba(0,102,255,0.8);stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:rgba(0,102,255,0.4);stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:rgba(0,102,255,0.8);stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:rgba(78,205,196,0.8);stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:rgba(78,205,196,0.4);stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:rgba(78,205,196,0.8);stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    
+                    <!-- Circles -->
+                    <div class="circle-element circle-1"></div>
+                    <div class="circle-element circle-2"></div>
+                    <div class="circle-element circle-3"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="interface-showcase">
+            <div class="screenshot-showcase">
+                <div class="screenshot-item welcome-screen">
+                    <div class="screenshot-image">
+                        <img src="images/welcomepng.png" alt="Приветственный экран">
+                    </div>
+                    <div class="image-info">
+                        <h4>Легкий старт</h4>
+                        <p>Добро пожаловать! Ваш уникальный ник — единственное, что нужно для входа. Забудьте о регистрации. Общение начинается здесь и сейчас. Начать работу с <span class="callifornia-text">Callifornia</span> быстро и просто.</p>
+                    </div>
+                </div>
+
+                <div class="screenshot-item main-menu">
+                    <div class="screenshot-image">
+                        <img src="images/interface.png" alt="Главное меню">
+                    </div>
+                    <div class="image-info">
+                        <h4>Элегантная простота</h4>
+                        <p>Начните новый звонок, просмотрите историю или настройте параметры одним нажатием.</p>
+                        <p>В главном меню вы найдете все необходимые инструменты для управления аудио. <strong>Audio controls</strong> позволяют точно настроить звук и выбрать оптимальные настройки микрофона и динамиков.</p>
+                    </div>
+                </div>
+
+                <div class="screenshot-item call-interface">
+                    <div class="screenshot-image">
+                        <img src="images/call.png" alt="Интерфейс звонка">
+                    </div>
+                    <div class="image-info">
+                        <h4>Звонки</h4>
+                        <p>Во время звонка вы легко управляете всем: отключите микрофон, уберите звук при необходимости отлучиться или завершите разговор. А с помощью плавных регуляторов вы можете тонко настроить громкость динамиков и громкость микрофона для идеальной слышимости.</p>
+                    </div>
+                </div>
+
+                <div class="screenshot-item encryption-feature">
+                    <div>
+                        <img src="images/encryption-light.png" alt="Шифрование">
+                    </div>
+                    <div class="image-info">
+                        <h4>End-to-End шифрование</h4>
+                        <p>Ваши разговоры защищены военной криптографией. Никто не сможет подслушать, даже мы. Полная конфиденциальность гарантирована.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" title="Наверх">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+
+    <script src="js/script.js"></script>
+</body>
+</html>

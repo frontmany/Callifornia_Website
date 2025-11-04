@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обновления - Callifornia</title>
+    <link rel="stylesheet" href="../styles/variables.css">
+    <link rel="stylesheet" href="../styles/layout.css">
+    <link rel="stylesheet" href="../styles/components.css">
+    <link rel="stylesheet" href="../styles/animations.css">
+    <link rel="stylesheet" href="../styles/roadmap.css">
+    <link rel="stylesheet" href="../styles/responsive.css">
+    <link rel="icon" href="../images/deadlock_logo.png" type="image/x-icon">
+
+    <style>
+        @font-face {
+            font-family: 'Outfit';
+            src: url('../fonts/Outfit-VariableFont_wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: normal;
+        }
+        
+        </style>
+</head>
+<body class="fancyBackground">
+    <header>
+        <div class="logo-container">
+            <img src="../images/deadlock_logo.png" alt="Callifornia Logo" class="logo">
+            <h1><span class="callifornia-text">Callifornia</span> <span class="beta-text">Beta</span></h1>
+        </div>
+        <button id="mobile-menu-toggle" class="mobile-menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Главная</a></li>
+                <li><a class="active" href="roadmap.html">Обновления</a></li>
+                <li><a href="download.html">Скачать</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-container">
+
+        <section class="latest-update-section">
+            <div class="latest-update-card">
+                <span class="timeline-status status-recent">Последнее обновление</span>
+                <h3>Версия 1.0.2 - поддержка Linux и улучшения стабильности</h3>
+                <p>Обновление Callifornia версии 1.0.2 приносит важные изменения: добавлена поддержка Linux платформы, что расширяет доступность приложения. Также включены значительные улучшения стабильности работы.</p>
+            </div>
+        </section>
+
+        <section class="roadmap-control">
+            <div class="timeline-control-wrapper">
+                <label for="timeline-slider" class="timeline-control-label">
+                    <span>Будущие обновления</span>
+                    <span class="slider-value">Q4 2025</span>
+                </label>
+                <div class="slider-container">
+                    <input type="range" id="timeline-slider" class="timeline-slider" min="0" max="4" value="0" step="1">
+                    <div class="slider-steps">
+                        <span class="slider-step active" data-step="0">Q4 2025</span>
+                        <span class="slider-step" data-step="1">Q1 2026</span>
+                        <span class="slider-step" data-step="2">Q2 2026</span>
+                        <span class="slider-step" data-step="3">Q3 2026</span>
+                        <span class="slider-step" data-step="4">2027+</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="roadmap-timeline">
+            <div class="timeline-item">
+                <span class="timeline-status status-in-progress">⚙️ В работе: Q4 2025</span>
+                <h3>macOS и Linux версии</h3>
+                <p>Расширение платформенной поддержки для большего числа пользователей:</p>
+                <ul class="feature-list">
+                    <li>Версия для macOS</li>
+                    <li>Версия для Linux (поддержка популярных дистрибутивов)</li>
+                    <li>Единый функционал на всех платформах</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-status status-planned">📅 Запланировано: Q1 2026</span>
+                <h3>Демонстрация экрана и чат</h3>
+                <p>Возможность делиться экраном и общаться через текстовый чат:</p>
+                <ul class="feature-list">
+                    <li>Захват всего экрана или отдельных окон</li>
+                    <li>Возможность передачи звука системы</li>
+                    <li>Текстовый чат во время звонка</li>
+                    <li>Отправка файлов в чате</li>
+                    <li>Безопасная передача с end-to-end шифрованием</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-status status-planned">📅 Запланировано: Q2 2026</span>
+                <h3>Групповые звонки</h3>
+                <p>Расширение возможностей для общения нескольких человек одновременно:</p>
+                <ul class="feature-list">
+                    <li>Групповые аудиозвонки</li>
+                    <li>Групповые видеозвонки</li>
+                    <li>Управление участниками (отключение микрофона, исключение)</li>
+                    <li>Режим "говорящий" с автоматическим выделением активного участника</li>
+                    <li>Сохранение высокого качества связи для всех участников</li>
+                    <li>End-to-end шифрование в групповых звонках</li>
+                    <li>Низкое потребление трафика даже в группах</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-status status-future">🔮 В планах: Q3 2026</span>
+                <h3>Видеозвонки с камерой</h3>
+                <p>Добавление видеосвязи с сохранением высокого качества и безопасности:</p>
+                <ul class="feature-list">
+                    <li>Видеозвонки в Full HD качестве</li>
+                    <li>Автоматическая адаптация качества видео под скорость интернета</li>
+                    <li>Возможность отключения камеры во время звонка</li>
+                    <li>End-to-end шифрование видеопотока</li>
+                    <li>Режим "только аудио" для экономии трафика</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-status status-future">🔮 Долгосрочные планы: 2027+</span>
+                <h3>Дополнительные возможности</h3>
+                <p>Функции, которые мы планируем добавить в будущем:</p>
+                <ul class="feature-list">
+                    <li>Запись звонков (с согласия всех участников)</li>
+                    <li>Интеграция с календарями для планирования звонков</li>
+                    <li>Мобильные приложения (iOS и Android)</li>
+                    <li>Веб-версия приложения</li>
+                    <li>Улучшенное шумоподавление с AI</li>
+                    <li>Реакции и эмодзи во время звонков</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" title="Наверх">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
+
