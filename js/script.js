@@ -386,3 +386,156 @@ function initRoadmapScrollAnimations() {
     // Инициализация: показываем только текущую версию
     updateTimelineVisibility(timelineSlider.value);
 }
+
+// ========================================
+// DOWNLOAD TRIANGLE NETWORK
+// ========================================
+function initDownloadTriangles() {
+    const container = document.querySelector('.tri-hero');
+    const canvas = container ? container.querySelector('canvas') : null;
+    if (!container || !canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let width = container.clientWidth;
+    let height = container.clientHeight;
+
+    function resize() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = container.clientWidth;
+        height = container.clientHeight;
+        canvas.width = Math.floor(width * dpr);
+        canvas.height = Math.floor(height * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        buildGrid();
+    }
+
+    const grid = [];
+    const cells = [];
+    let cols = 16;
+    let rows = 7;
+    const phases = [];
+
+    function buildGrid() {
+        grid.length = 0;
+        cells.length = 0;
+        phases.length = 0;
+
+        // Adjust density based on width
+        cols = Math.max(12, Math.round(width / 70));
+        rows = Math.max(6, Math.round(height / 40));
+
+        const xStep = width / (cols - 1);
+        const yStep = height / (rows - 1);
+
+        for (let j = 0; j < rows; j++) {
+            for (let i = 0; i < cols; i++) {
+                const jitterX = (Math.random() - 0.5) * xStep * 0.2;
+                const jitterY = (Math.random() - 0.5) * yStep * 0.2;
+                grid.push({
+                    bx: i * xStep,
+                    by: j * yStep,
+                    x: i * xStep + jitterX,
+                    y: j * yStep + jitterY,
+                    phase: Math.random() * Math.PI * 2,
+                    speed: 0.6 + Math.random() * 0.6
+                });
+            }
+        }
+
+        for (let j = 0; j < rows - 1; j++) {
+            for (let i = 0; i < cols - 1; i++) {
+                const idx = j * cols + i;
+                const a = grid[idx];
+                const b = grid[idx + 1];
+                const c = grid[idx + cols];
+                const d = grid[idx + cols + 1];
+                cells.push([a, b, c]); // triangle 1
+                cells.push([b, d, c]); // triangle 2
+            }
+        }
+    }
+
+    const mouse = { x: width / 2, y: height / 2, over: false };
+
+    function update(t) {
+        const time = t * 0.001;
+        for (let p of grid) {
+            const rdx = Math.sin(time * p.speed + p.phase) * 3;
+            const rdy = Math.cos(time * p.speed + p.phase) * 3;
+            p.x = p.bx + rdx;
+            p.y = p.by + rdy;
+            if (mouse.over) {
+                const dx = p.x - mouse.x;
+                const dy = p.y - mouse.y;
+                const dist = Math.hypot(dx, dy);
+                const influence = Math.max(0, 1 - dist / 180);
+                p.x += dx * -0.08 * influence;
+                p.y += dy * -0.08 * influence;
+            }
+        }
+    }
+
+    function render() {
+        ctx.clearRect(0, 0, width, height);
+        for (let tri of cells) {
+            const cx = (tri[0].x + tri[1].x + tri[2].x) / 3;
+            const cy = (tri[0].y + tri[1].y + tri[2].y) / 3;
+            const mdx = cx - mouse.x;
+            const mdy = cy - mouse.y;
+            const md = Math.hypot(mdx, mdy);
+            const near = Math.max(0, 1 - md / 260);
+
+            const hue = 205 + near * 30; // shift towards teal near cursor
+            const sat = 68;
+            const light = 82 - near * 22;
+            const fillA = 0.06 + near * 0.08;
+            const strokeA = 0.06 + near * 0.12;
+
+            ctx.beginPath();
+            ctx.moveTo(tri[0].x, tri[0].y);
+            ctx.lineTo(tri[1].x, tri[1].y);
+            ctx.lineTo(tri[2].x, tri[2].y);
+            ctx.closePath();
+
+            ctx.fillStyle = `hsla(${hue}, ${sat}%, ${light}%, ${fillA})`;
+            ctx.fill();
+
+            ctx.strokeStyle = `hsla(${hue}, ${sat}%, ${light - 8}%, ${strokeA})`;
+            ctx.lineWidth = 0.6;
+            ctx.stroke();
+        }
+    }
+
+    let rafId = 0;
+    function loop(t) {
+        update(t || 0);
+        render();
+        rafId = requestAnimationFrame(loop);
+    }
+
+    function onPointerMove(e) {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = (e.clientX - rect.left) * (width / rect.width);
+        mouse.y = (e.clientY - rect.top) * (height / rect.height);
+        mouse.over = true;
+    }
+
+    function onPointerLeave() {
+        mouse.over = false;
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+    canvas.addEventListener('pointermove', onPointerMove);
+    canvas.addEventListener('pointerleave', onPointerLeave);
+
+    if (prefersReducedMotion) {
+        render();
+        return;
+    }
+
+    loop(0);
+}

@@ -19,9 +19,16 @@
             font-style: normal;
         }
         
+        /* Disable all shadows on this page */
+        body.no-shadows *, 
+        body.no-shadows *::before, 
+        body.no-shadows *::after {
+            box-shadow: none !important;
+            text-shadow: none !important;
+        }
         </style>
 </head>
-<body>
+<body class="no-shadows">
     <header>
         <div class="logo-container">
             <img src="images/callifornia.png" alt="Callifornia Logo" class="logo">
@@ -91,9 +98,7 @@
                 </div>
 
                 <div class="screenshot-item main-menu">
-                    <div class="screenshot-image">
-                        <img src="images/interface.png" alt="Главное меню">
-                    </div>
+                    <img src="images/interface.png" alt="Главное меню" class="screenshot-media">
                     <div class="image-info">
                         <h4>Элегантная простота</h4>
                         <p>Начните новый звонок, просмотрите историю или настройте параметры одним нажатием.</p>

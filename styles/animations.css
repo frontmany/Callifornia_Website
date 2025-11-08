@@ -21,6 +21,130 @@
     filter: drop-shadow(0 0 20px rgba(0, 102, 255, 0.3));
 }
 
+/* Download page: triangle network */
+.tri-hero {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    height: 180px;
+}
+
+.tri-hero canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+@media (max-width: 1024px) {
+    .tri-hero {
+        height: 150px;
+        max-width: 760px;
+    }
+}
+
+@media (max-width: 768px) {
+    .tri-hero {
+        height: 130px;
+        max-width: 100%;
+    }
+}
+
+/* Download page: creative morphing blobs */
+.download-abstract {
+    padding: 0 5% 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blob-hero {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    height: 240px;
+    filter: saturate(110%);
+}
+
+.blob {
+    position: absolute;
+    border-radius: 55% 45% 60% 40% / 50% 60% 40% 50%;
+    filter: blur(40px);
+    opacity: 0.6;
+    mix-blend-mode: screen;
+    animation: blobFloat 16s ease-in-out infinite, blobMorph 14s ease-in-out infinite;
+    will-change: transform, border-radius, opacity;
+}
+
+.blob-1 {
+    width: 360px;
+    height: 360px;
+    left: 6%;
+    top: -20px;
+    background: radial-gradient(circle at 30% 30%, rgba(0, 102, 255, 0.55), rgba(0, 102, 255, 0.0) 60%);
+    animation-duration: 18s, 20s;
+}
+
+.blob-2 {
+    width: 300px;
+    height: 300px;
+    right: 6%;
+    top: 10px;
+    background: radial-gradient(circle at 70% 40%, rgba(78, 205, 196, 0.55), rgba(78, 205, 196, 0.0) 60%);
+    animation-duration: 16s, 18s;
+    animation-delay: 0.6s, 0.6s;
+}
+
+.blob-3 {
+    width: 320px;
+    height: 320px;
+    left: 35%;
+    top: 40px;
+    background: radial-gradient(circle at 50% 60%, rgba(0, 102, 255, 0.45), rgba(78, 205, 196, 0.0) 60%);
+    animation-duration: 20s, 22s;
+    animation-delay: 1.2s, 1.2s;
+}
+
+@keyframes blobFloat {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    25% { transform: translate3d(30px, -20px, 0) scale(1.05); }
+    50% { transform: translate3d(-20px, 25px, 0) scale(0.95); }
+    75% { transform: translate3d(10px, -10px, 0) scale(1.03); }
+}
+
+@keyframes blobMorph {
+    0%, 100% { border-radius: 55% 45% 60% 40% / 50% 60% 40% 50%; }
+    33% { border-radius: 60% 40% 55% 45% / 48% 52% 58% 42%; }
+    66% { border-radius: 50% 60% 45% 55% / 60% 40% 50% 50%; }
+}
+
+@media (max-width: 1024px) {
+    .blob-hero {
+        height: 200px;
+        max-width: 760px;
+    }
+    .blob { filter: blur(36px); }
+    .blob-1 { width: 300px; height: 300px; }
+    .blob-2 { width: 260px; height: 260px; }
+    .blob-3 { width: 280px; height: 280px; left: 32%; }
+}
+
+@media (max-width: 768px) {
+    .blob-hero {
+        height: 180px;
+        max-width: 100%;
+    }
+    .blob { filter: blur(32px); opacity: 0.55; }
+    .blob-1 { width: 240px; height: 240px; left: 2%; top: -10px; }
+    .blob-2 { width: 220px; height: 220px; right: 2%; top: 10px; }
+    .blob-3 { width: 220px; height: 220px; left: 28%; top: 30px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .blob {
+        animation: none !important;
+        opacity: 0.4;
+    }
+}
 .wave-line {
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;

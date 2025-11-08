@@ -484,7 +484,7 @@
 .screenshot-item {
     display: flex;
     flex-direction: row;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.22);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 25px;
@@ -499,8 +499,31 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+.screenshot-item > img.screenshot-media {
+    width: 600px;
+    height: 400px;
+    flex-shrink: 0;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 0;
+    box-shadow: none;
+}
+
 .screenshot-item:hover {
     box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
+}
+
+/* Remove shadows for all cards except "Элегантная простота" */
+.screenshot-item.welcome-screen,
+.screenshot-item.call-interface,
+.screenshot-item.encryption-feature {
+    box-shadow: none;
+}
+
+.screenshot-item.welcome-screen:hover,
+.screenshot-item.call-interface:hover,
+.screenshot-item.encryption-feature:hover {
+    box-shadow: none;
 }
 
 .screenshot-item:nth-child(odd) {
@@ -511,6 +534,7 @@
     flex-direction: row-reverse;
 }
 
+/* .screenshot-image kept for backward compatibility on other pages */
 .screenshot-image {
     position: relative;
     width: 600px;
@@ -519,7 +543,7 @@
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     flex-shrink: 0;
-    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    background: none;
 }
 
 .screenshot-image img {
@@ -532,6 +556,12 @@
 
 .screenshot-item:hover .screenshot-image img {
     transform: none;
+}
+
+/* Remove inner image frame shadows for reverted cards */
+.screenshot-item.welcome-screen .screenshot-image,
+.screenshot-item.call-interface .screenshot-image {
+    box-shadow: none;
 }
 
 .image-info {
@@ -561,8 +591,15 @@
     min-height: 800px;
 }
 
-.screenshot-item.main-menu .screenshot-image {
+/* Main menu image without extra wrapper */
+.screenshot-item.main-menu > img.screenshot-media {
+    width: 600px;
     height: 700px;
+    flex-shrink: 0;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 0;
+    box-shadow: none;
 }
 
 /* CTA Section */

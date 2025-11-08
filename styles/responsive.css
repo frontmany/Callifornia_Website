@@ -288,13 +288,33 @@
         padding: 1.5rem;
         gap: 1.5rem;
         min-height: auto;
-        background: white;
+        background: rgba(235, 235, 235, 0.22);
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Remove shadows on mobile for all except "Элегантная простота" */
+    .screenshot-item.welcome-screen,
+    .screenshot-item.call-interface,
+    .screenshot-item.encryption-feature {
+        box-shadow: none;
+    }
+    
+    .screenshot-item > img.screenshot-media {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        object-position: center;
     }
     
     .screenshot-item:hover {
         transform: translateY(-5px);
         box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .screenshot-item.welcome-screen:hover,
+    .screenshot-item.call-interface:hover,
+    .screenshot-item.encryption-feature:hover {
+        box-shadow: none;
     }
     
     .screenshot-image {
@@ -303,13 +323,10 @@
         border-radius: 15px;
     }
     
-    .screenshot-item.main-menu .screenshot-image {
+    .screenshot-item.main-menu > img.screenshot-media {
+        width: 100%;
         height: auto;
-        min-height: 400px;
         max-height: 600px;
-    }
-    
-    .screenshot-item.main-menu .screenshot-image img {
         object-fit: contain;
         object-position: center;
     }
@@ -335,13 +352,18 @@
         height: 280px;
     }
     
-    .screenshot-item.main-menu .screenshot-image {
+    .screenshot-item.main-menu > img.screenshot-media {
+        width: 100%;
         height: auto;
         min-height: 450px;
         max-height: 650px;
+        object-fit: contain;
+        object-position: center;
     }
     
-    .screenshot-item.main-menu .screenshot-image img {
+    .screenshot-item > img.screenshot-media {
+        width: 100%;
+        height: auto;
         object-fit: contain;
         object-position: center;
     }
